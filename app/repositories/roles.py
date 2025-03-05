@@ -1,8 +1,6 @@
 from app.dependencies.database import SessionDep
 from app.models import Role
-from app.schemas import (
-    RoleCreate,
-)
+from app.schemas import RoleCreate
 
 
 class RoleRepository:
@@ -30,3 +28,15 @@ class RoleRepository:
     def get_all_roles(self) -> list[Role]:
         return self.session.query(Role) \
             .all()
+
+    def update_role(self, role_id: int, update_dict: dict) -> Role:
+        rows_affected = self.session.query(Role) \
+            .filter(Role.id == role_id) \
+            .update(update_dict)
+
+        if rows_affected > 1:
+            self.session.rollback()
+            raise Exception("More than one role updated")
+
+        self.session.commit()
+        return self.get_role(role_id)
