@@ -6,7 +6,7 @@ from sqlalchemy.orm import (
 )
 
 
-class RolePermissions(Base):
+class RolePermission(Base):
     __tablename__ = "role_permissions"
 
     role_id: Map[int] = mapped_column(

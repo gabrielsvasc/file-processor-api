@@ -6,7 +6,7 @@ from sqlalchemy.orm import (
 )
 
 
-class Permissions(Base):
+class Permission(Base):
     __tablename__ = "permissions"
 
     id: Map[int] = mapped_column(primary_key=True, autoincrement=True)
