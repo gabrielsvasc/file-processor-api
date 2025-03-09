@@ -2,7 +2,7 @@ import logging
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from app.schemas import RoleCreate, RolePublic, RoleUpdate
+from app.schemas import RolePublic, RoleBase
 from app.dependencies.services import RoleServiceDep
 
 
@@ -22,7 +22,7 @@ def get_role(role_id: int, service: RoleServiceDep):
 
 
 @router.post(path="/", response_model=RolePublic)
-def create_role(role: RoleCreate, service: RoleServiceDep):
+def create_role(role: RoleBase, service: RoleServiceDep):
     try:
         return service.create_role(role)
     except ValueError as ex:
@@ -44,8 +44,8 @@ def get_roles(service: RoleServiceDep):
     return service.get_all_roles()
 
 
-@router.patch(path="/{role_id}", response_model=RolePublic)
-def update_role(role_id: int, role: RoleUpdate, service: RoleServiceDep):
+@router.put(path="/{role_id}", response_model=RolePublic)
+def update_role(role_id: int, role: RoleBase, service: RoleServiceDep):
     try:
         return service.update_role(role_id, role)
     except ValueError as ex:
