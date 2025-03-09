@@ -6,8 +6,8 @@ from sqlalchemy.orm import (
 )
 
 
-class Role(Base):
-    __tablename__ = "roles"
+class Permissions(Base):
+    __tablename__ = "permissions"
 
     id: Map[int] = mapped_column(primary_key=True, autoincrement=True)
-    name: Map[str] = mapped_column(String(20), unique=True)
+    name: Map[str] = mapped_column(String(30), unique=True)
