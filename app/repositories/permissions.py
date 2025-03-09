@@ -8,7 +8,7 @@ class PermissionRepository:
         self.session = session
 
     def create_permission(self, permission: PermissionCreate) -> Permission:
-        permission = PermissionCreate(**permission.model_dump())
+        permission = Permission(**permission.model_dump())
 
         self.session.add(permission)
         self.session.commit()
