@@ -4,6 +4,12 @@ from app.schemas.roles import (
     RoleCreate,
     RoleUpdate,
 )
+from app.schemas.permissions import (
+    PermissionBase,
+    PermissionPublic,
+    PermissionCreate,
+    PermissionUpdate,
+)
 
 
 __all__ = [
@@ -11,4 +17,8 @@ __all__ = [
     "RolePublic",
     "RoleCreate",
     "RoleUpdate",
+    "PermissionBase",
+    "PermissionPublic",
+    "PermissionCreate",
+    "PermissionUpdate",
 ]
