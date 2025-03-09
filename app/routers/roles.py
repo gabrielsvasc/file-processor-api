@@ -6,7 +6,7 @@ from app.schemas import RolePublic, RoleBase
 from app.dependencies.services import RoleServiceDep
 
 
-router = APIRouter(prefix="/roles")
+router = APIRouter(prefix="/roles", tags=["Roles"])
 
 
 @router.get(path="/{role_id}", response_model=RolePublic)
